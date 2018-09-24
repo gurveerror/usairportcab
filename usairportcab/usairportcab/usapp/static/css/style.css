@@ -1,0 +1,201 @@
+@charset "utf-8";
+/* CSS Document */
+/*header start*/
+p{font-family: 'Oxygen';}
+h1,h2,h3,h4,h5{font-family:lato;}
+body{ padding:0px; margin:0px;font-family:sans-serif;     color: #454444; letter-spacing: 1px; background-color:#fff;}
+header{width:100%; float:left; margin:0px; padding:0px;    margin-bottom: 100px;}
+a{ color:#000; text-decoration:none; font-size:14px;}
+.main-container{ width:1200px; margin:auto;}
+.logo{ width:40%; float:left; }
+.logo h2{ width:auto; float:left; padding:0px; margin:10px 0px; }
+.nav{ width:60%; float:left; }
+.nav ul{width:100%; float: right; margin:0px; padding: 0px;    text-align: right;}
+.nav ul li{list-style:none;    display: inline-block;    padding: 10px;}
+.nav ul li.cntr{padding: 18px;border-left: 1px solid #d2cccc;border-right: 1px solid #d2cccc;}
+.nav ul li a{ color:#000;    font-size: 16px;}
+
+.wid100{ width:100%; float:left; }
+ul.ser{ width:100%; float:left; padding:0px; margin:0px}
+ul.ser li{ width:30%; float:left; list-style:none; padding-left:3%; text-align:left}
+ul.ser li img{ height:150px}
+ul.ser li span{ width:100%; float:left; font-size:22px; padding:8px 0px}
+ul.ser li p{ width:100%; float:left; font-size:16px; padding:0px; margin:0px} 
+.reson{ width:100%; float:left;} 
+.reson img{ width:100%; float:left; }
+.build{ width:60%; float:left}
+.build img{ width:100%; float:left}
+.build-left{ width:38%; float:left; text-align:left; padding-left:2%}
+ul#fare{ display:none}
+#fare2{ display:none}
+.search-places{ width: 28%;    float: left;    margin-right: 20px; margin-top: 125px}
+.search-places h2{ margin-top: 0;    margin-bottom: 5px; }
+.search-places span.st{ padding:13px 0px;float: left;
+    width: 100%;}
+.search-places input{    width: 94%;
+    float: left;
+    padding: 10px 0px;
+    border: 1px solid #e0dede;
+    margin: 5px 0;
+    padding-left: 5%;
+    font-size: 16px;
+    border-radius: 3px; }
+.search-places .full{width: 100%; float: left}
+.search-places .full .half{width: 50%; float: left} 
+.search-places .full .half input{   width: 92%;
+    float: left;
+    padding: 10px 0px;
+    border: 1px solid #e0dede;
+    margin: 5px 0;
+    padding-left: 5%;
+    font-size: 16px;
+    border-radius: 3px;}
+   .search-places .full .half select{   width: 98%;
+    float: left;
+    padding: 10px 0px;
+    border: 1px solid #e0dede;
+    margin: 5px 0;
+    padding-left: 5%;
+    font-size: 16px;
+    border-radius: 3px;} 
+.search-places input[type=button]{    background-color: #000;
+    color: #fff;
+    text-align: center;
+    width: 62%;
+    margin: 0;
+    float: right;
+    padding: 10px 0;}
+.search-places ul{ width:100%; float:left; padding:0px; margin:0px; }
+.search-places ul li{ width:93%; float:left;padding:5px 0px;font-size: 14px; list-style:none; padding-left:3%; text-align:left; cursor:pointer; background-color:#fff; margin:5px 0px;padding-right: 1%;
+    border-radius: 3px; }
+.search-places ul li:hover{ background-color:#7C7C7C;}
+.search-places ul li span{ float:left}
+.search-places ul li label{ float:right}
+.search-places ul li b{ background-color:#000;     padding: 0px 3px; border-radius:50%; color:#fff; }
+.right-map{ width:70%; float:left; margin-bottom: 100px}
+#map-canvas{ width:100%; float:right; height:600px}
+.right-map .wid33fare{ width:30%; float:left; padding-left:3%;}
+.right-map .wid33fare span{ width:50%; float:left; padding:5px 0px}
+.right-map .wid33fare label{ width:50%; float:left;padding:5px 0px}
+.right-map .wid33fare label b{ background-color:#000;     padding: 0px 3px; border-radius:50%; color:#fff; }
+ .right-map .wid33fare  input[type=submit]{ background-color:#000; color:#fff; text-align:center; width:98%; margin-top:2px;width:92%; float:left; padding:10px 0px; border:1px solid #ccc; margin-top:50px }
+ footer{ width:100%; float:left; background-color:#000; color:#fff; padding:20px 0px;}
+footer .wid33{ width:33%; float:left; margin:10px 0px}
+.bdr{ border-bottom:1px solid #fff}
+footer .wid33 h3{ padding:0px; margin:0px}
+footer .wid33 a.st{ background-color:#fff; padding:5px; color:#000}
+footer .wid33 a.st1{ background-color:#000; padding:5px; color:#fff; border:2px solid #fff;}
+footer .wid33  ul{ padding:0px}
+footer .wid33 li{ list-style:none; color:#fff; margin:10px 0px}
+footer .wid33 li a{  color:#fff}
+.pad30{ padding:30px 0px}
+.des{ width:100%; float:left; margin-top:-300px; color:#fff}
+.des a{ color:#fff; background-color:#000; padding:10px; padding-right:30px}
+.fare-container{width:1000px; margin:auto}
+.fare-header-left{ margin-top: 25px;width: 40%; float: left; border-right: 1px solid #a9a9a938;}
+.fare-header-right{ margin-top: 25px;width: 58%; float: left;}
+.fare-header-right span{    font-size: 24px;font-weight: 700;line-height: 1.25; padding-left: 40px;display: inline-block;margin-top: 15px;}
+section{width:100%; display:inline-block}
+section .full{width:100%; float: left}
+section .full .details{ display: inline-block}
+section .full .details label{width: 100%;display: inline-block;font-size: 17px;font-weight: 700;}
+section .full .details span{ width:100%; display:inline-block}
+.grayborder{border: 1px solid #a9a9a938;    background: #e0dede38;}
+.width25{width:27%;padding: 10px;border-right: 1px solid #a9a9a938;}
+.width10{width: 10%;padding: 10px;border-right: 1px solid #a9a9a938;}
+.width5{width:5%;padding: 10px;border-right: 1px solid #a9a9a938;}
+.last{border: none !important;}
+#fare-modify{    border: 1px solid #a9a9a938;    background: #dad6d638;}
+.fare-full{width:100%;float:left}
+.full-fromto{width: 48%;    float: left;    padding: 10px;}
+.full-fromto label{padding: 10px 20px;font-size: 17px;width: 10%;background-color: #000;color: #fff;float: left;}
+.full-fromto input{font-size: 14px;padding: 12px 10px 10px 10px;width: 76%;border: none;border: 1px solid #80808040;}
+.fare-full  .width24{width: 18%;float: left;padding: 0px 10px 10px 10px;}
+.fare-full  .width24 label{padding: 10px 0px;font-size: 17px;width: 10%;background-color: #000;color: #fff;float: left; text-align:center; width:100%}
+.fare-full  .width24 input{font-size: 14px;padding: 12px 10px 10px 10px;width: 87.5%;border: none;border: 1px solid #80808040;}
+.fare-full  .width24 select{font-size: 14px;padding: 12px 10px 10px 10px;width: 100%;border: none;border: 1px solid #80808040;}
+.fare-full  .width24 input[type="submit"]{width: 97%;color: #fff;background-color: #5879da;    margin-top: 35px;    cursor: pointer;font-size: 16px;padding: 10px;border-radius: 5px;
+    box-shadow: 1px 1px 10px grey;}
+.fare-container header{ margin-bottom:10px}
+#getresult{ width:100%; float:left}
+#getresult ul{padding: 0;margin: 0;list-style: none;}
+#getresult .getresult-full{width: 100%;float: left;border: 1px solid #a9a9a938;margin-top: 10px;}
+#getresult .getresult-full .getresult-left{ width:25%; float:left}
+#getresult .getresult-full .getresult-left img{ width:90%; padding:10px}
+#getresult .getresult-full .getresult-center{ width:55%; float:left}
+#getresult .getresult-full .getresult-center .getresult-center-left{width:71%; float:left;line-height: 23px;}
+#getresult .getresult-full .getresult-center .getresult-center-left .cardetails{margin-top: 20px;}
+#getresult .getresult-full h2,#getresult .getresult-full h4{    margin: 10px 0;}
+#getresult .getresult-full .getresult-center .getresult-center-right{width: 25%;float: left;line-height: 23px;font-size: 13px;padding: 0px 10px;
+    border-right: 1px solid #a9a9a938;border-left: 1px solid #a9a9a938;    min-height: 200px;}
+#getresult .getresult-full .getresult-right{ width:20%; float:left;width: 18%;float: left; padding: 0px 10px; line-height:23px}
+#getresult .getresult-full .getresult-right label{width: 70%;float: left;}
+#getresult .getresult-full .getresult-right span{width: 30%;float: left;}
+#getresult .getresult-full .getresult-right .total{margin-top: 10px;font-weight: 700;font-size: 18px; border: 1px solid #b1deb1; padding: 5px;
+    background: #e5f5e5;width: 92%; color: #20ce20;}
+#getresult .getresult-full .getresult-right .total span{    font-size: 20px;}
+.bluebtn{    width: 100%; color: #fff; background-color: #5879da;margin-top: 6px;cursor: pointer; font-size: 16px;border: navajowhite;padding: 10px;border-radius: 5px;box-shadow: 1px 1px 10px grey;}
+.search-places input .bluebtn{    width: 100%; color: #fff; background-color: #5879da;margin-top: 6px;cursor: pointer; font-size: 16px;border: navajowhite;padding: 10px;border-radius: 5px;box-shadow: 1px 1px 10px grey;}
+#login-form{width: 70%;margin: auto;display: block;}
+#login-form .login-section{    width: 100%; float: left; margin: 125px 0;    border: 1px solid; padding: 25px;}
+#login-form .login-section h1{ text-align:center; margin-top:0px}
+#login-form .login-section .width60{ width:60% !important}
+#login-form .login-section .full p{ width:100%; float:left;margin-bottom:10px;    text-align: right;}
+#login-form .login-section .full label{ width:30%; float:left; text-align:left}
+#login-form .login-section .full input[type='text'], #login-form .login-section .full input[type='password'], #login-form .login-section .full input[type='email'], #login-form .login-section .full input[type='number']{ width:60%; float:left; padding:7px}
+#login-form .login-section .full input[type='submit']{ width:20%}
+ #login-form .login-section .full select{ width:62.5%; float:left; padding:7px}
+ #login-form .login-section .full textarea{ width:60.5%; float:left; padding:7px}
+.errorlist{    color: red;
+    width: 60%;
+    margin-left: 115px;
+    margin-bottom: -15px;}
+.helptext{font-size: 11px;float: right;}
+.messages{padding: 0; margin: 0;list-style: none;}
+.messages .success{padding: 10px;background: #ceefce;color: green;border: 1px solid green;}
+.messages .error{padding: 10px;background: #efced1;color: #ef0c17;border: 1px solid #e8133a;}
+.social{width: 39%; height: 150px; float: left; border-left: 1px solid #dedada;}
+.social ul{ padding:0; margin:0; list-style:none;    margin-top: 10px;}
+.social ul li img{    width: 90%;margin-left: 10%;}
+.loginbtm{ text-align: center;margin-top: 20px;}
+.dadhbord-menu-container{ width:100%; float:left; border: 1px solid #a9a9a938;    padding: 10px 0;}
+.dadhbord-menu-container .nav ul li{ float: left; padding: 10px 20px; border-right: 1px solid #a9a9a938;}
+.dadhbord-menu-container .user{width: 40%;float: left;text-align: right;padding-top: 10px;font-size: 16px;}
+.dadhbord-menu-container .user a{padding: 10px 20px;border-left: 1px solid #a9a9a938;margin-left: 10px;}
+#dashboard-section{ width: 100%;float: left; margin: 20px 0;}
+#dashboard-section .top{ width: 100%;float: left;    border: 1px solid #a9a9a938;}
+#dashboard-section .top .top-left{ width: 30%;float: left;}
+#dashboard-section .top .top-left img{margin:5%;    width: 90%;}
+#dashboard-section .top .top-right{ width: 70%;float: left;}
+#dashboard-section .top .top-right .full{ text-align:center; padding:10px 0}
+#dashboard-section .top .top-right span{width: 50%;float: left;padding: 20px 0;border-top: 1px solid #a9a9a938;border-bottom: 1px solid #a9a9a938;}
+#dashboard-section .bottom{    width: 100%;float: left;border: 1px solid #a9a9a938;margin-top: 10px; border-top:none}
+#dashboard-section .bottom .full{    border-top: 1px solid #a9a9a938;    padding: 12px; width: 97.5%;}
+#dashboard-section .bottom .full .name{ width:70%; float:left}
+#dashboard-section .bottom .full .fare{ width:10%; float:left;    text-align: center;}
+#dashboard-section .bottom .full .fare a{    padding: 5px 15px;}
+
+
+@media screen and (max-width:1200px){
+.main-container{ width:94%;}
+}
+@media screen and (max-width:767px){
+.nav a{ padding:2px}
+.search-places{ width:100%; min-height:100px}
+.right-map{ width:100%;}
+ul.ser li{ width:100%; padding-left:0px;text-align: center;}
+footer .wid33{ width:100%;text-align: center;}
+.build-left{ width:100%; padding-left:0%;}
+.build{ width:100%;}
+.logo {width: 100%;float: left;text-align: center;}
+.logo h2 {width: 100%}
+.nav{ width:100%;}
+.stmobile{ display:block}
+.hidemobile{ display:none}
+.nav ul{ width:94%; margin-left:0px;}
+.right-map .wid33fare{ width:100%; padding:0px}
+}
+
+@media screen and (max-width:650px){
+
+}

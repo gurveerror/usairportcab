@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en" xmlns:usapp="http://www.w3.org/1999/xhtml" xmlns:ride_time="http://www.w3.org/1999/xhtml" xmlns:lugg>
+<head>
+{% load staticfiles %}
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0">
+<title>Title</title>
+<meta name="description" content="Desc">
+<meta name="keywords" content="Keywords">
+<link rel="stylesheet" href="{% static "css/style.css" %}">
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet'>
+<link rel="stylesheet" href="{% static "js/jquery/development-bundle/themes/start/jquery.ui.all.css" %}">
+<link rel="stylesheet" href="{% static "js/jquery/css/demos.css" %}">
+<script type='text/javascript' src="{% static "js/jquery-1.7.2.min.js" %}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAuGBB_AIakD-eVCpOhC4pMfRKwEcul9KQ&libraries=places"></script>
+</head>
+<body>
+<div class="fare-container">
+  {% include 'user-header.html' %}
+      <div id="dashboard-section">
+           {% if messages %}
+                 <ul class="messages">
+                 {% for message in messages %}
+                     <li class="{{ message.tags }}">
+                     {{ message|safe }}
+                     <a href="#" class="close">✖</a>
+                     </li>
+                 {% endfor %}
+                 </ul>
+             {% endif %}
+          <div class="top">
+              <div class="top-left">
+                    <img src="{% if sitecommondetails.logo %}{{ sitecommondetails.logo.url }}{% else %}{% static "images/car.jpg" %}{% endif %}">
+              </div>
+              <div class="top-right">
+                    <div class="full">
+                        <h2>{{ sitecommondetails.company_name }}</h2>
+                    </div>
+                    <div class="full">
+                        <span>{{ sitecommondetails.phone_no }}</span>
+                        <span>{{ sitecommondetails.email }}</span>
+                    </div>
+                  <div class="full">
+                        {{ sitecommondetails.address }}
+                  </div>
+                  <div class="full">
+                        Active User: {{ profile.user }} &nbsp;&nbsp; | &nbsp;&nbsp; Phone: {{ profile.phone }}
+                  </div>
+              </div>
+          </div>
+          <div class="bottom">
+                <div class="full">
+                    <div class="name"><b>Car name</b></div>
+                    <div class="fare"><b>Min Fare</b></div>
+                    <div class="fare"><b>Edit</b></div>
+                    <div class="fare"><b>Delete</b></div>
+                </div>
+              {% for car in carfare %}
+                <div class="full">
+                    <div class="name">{{ car.car_name }}</div>
+                    <div class="fare">{{ car.min_fare }}</div>
+                    <div class="fare"><a href="{{ car.get_absolute_url }}" class="bluebtn">Edit</a></div>
+                    <div class="fare"><a href="{{ car.get_delete_url }}"  class="bluebtn">Delete</a></div>
+                </div>
+              {% endfor %}
+          </div>
+      </div>
+  </section>
+
+
+</div>
+  {% include "footer.html" %}
+</body>
+</html>

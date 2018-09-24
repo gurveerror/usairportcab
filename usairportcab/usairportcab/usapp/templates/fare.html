@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en" xmlns:usapp="http://www.w3.org/1999/xhtml" xmlns:ride_time="http://www.w3.org/1999/xhtml" xmlns:lugg>
+<head>
+{% load staticfiles %}
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0">
+<title>Title</title>
+<meta name="description" content="Desc">
+<meta name="keywords" content="Keywords">
+<link rel="stylesheet" href="{% static "css/style.css" %}">
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet'>
+<link rel="stylesheet" href="{% static "js/jquery/development-bundle/themes/start/jquery.ui.all.css" %}">
+<link rel="stylesheet" href="{% static "js/jquery/css/demos.css" %}">
+<script type='text/javascript' src="{% static "js/jquery-1.7.2.min.js" %}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAuGBB_AIakD-eVCpOhC4pMfRKwEcul9KQ&libraries=places"></script>
+</head>
+<body>
+<div class="fare-container">
+  <header>
+      <div class="fare-header-left">
+          <div class="logo">
+             <img src="{% static "images/logo.png" %}">
+          </div>
+      </div>
+      <div class="fare-header-right">
+          <span>Find your ideal car service and compare prices from different websites</span>
+      </div>
+  </header>
+  <section id="fare-modify">
+       <form name="check_fare_form" id="check_fare_form" method="post"  enctype="multipart/form-data" action="{% url "usapp:getfare" %}">
+           {% csrf_token %}
+           <div class="fare-full">
+               <div class="full-fromto">
+                    <label>From</label><input type="text" name="from" id="from" placeholder="Enter pickup location" value="{{ pickup }}"/>
+               </div>
+               <div class="full-fromto">
+                    <label>To</label><input type="text" name="to" id="to" placeholder="Enter Destination" value="{{ dropoff }}"/>
+               </div>
+           </div>
+           <div class="fare-full">
+               <div class="width24">
+                    <label>Date</label>
+                    <input type="text" name="datepicker" id="datepicker"  placeholder="Select Date" onclick="initialize();"  value="{{ ride_date }}"/>
+               </div>
+               <div class="width24">
+                    <label>Time</label>
+                    <select name="time">
+                        {% for i,j in time %}
+                        <option value="{{ j }}" {% if j == ride_time %}selected{% endif %} >{{ i }}</option>
+                        {% endfor %}
+                    </select>
+               </div>
+               <div class="width24">
+                    <label>Passanger</label>
+                    <select name="pax">
+                        {% for i in range %}
+                        <option value="{{ i }}"  {% if i == pax %}selected{% endif %} > {{ i }}</option>
+                        {% endfor %}
+                    </select>
+               </div>
+               <div class="width24">
+                    <label>Luggage</label>
+                    <select name="lugg">
+                        {% for i in range %}
+                        <option value="{{ i }}" {% if i == lugg %}selected{% endif %} >{{ i }}</option>
+                        {% endfor %}
+                    </select>
+               </div>
+               <input type="hidden" name="key" id="key" value="{{ distance }}">
+               <div class="width24">
+                    <input type="submit" name="submit" value="Modify Search &#x27A1;" id="submit"/>
+               </div>
+           </div>
+       </from>
+      <div id="map-canvas" style="display:none"></div>
+  </section>
+  <section id="getresult">
+      <ul>
+
+          {% for key,value in result.items %}
+          <li class="getresult-full">
+
+
+              <div class="getresult-left">
+                  <img src="{% if value.9 %}{{ value.9.url }}{% else %}{% static "images/car.jpg" %}{% endif %}">
+              </div>
+
+              <div class="getresult-center">
+                  <div class="getresult-center-left">
+                      <h2>{{  value.0|title }}</h2>
+                      <div class="full">Rating based on google : (8.1 / 10)</div>
+                      <div class="full">Affordeble Service</div>
+
+                      <div class="full cardetails">Car Details: {{ value.8 }}</div>
+                      <div class="full">{{ value.10|floatformat:"0" }} Passenger | {{ value.11|floatformat:"0" }} L & {{ value.12|floatformat:"0" }} S Luggage | {{ value.13 }}</div>
+
+                  </div>
+                  <div class="getresult-center-right">
+                      <h4>More fare(Exclude) : </h4>
+                      <div class="full cardetails">Child seat:(${{ value.5|floatformat:"0" }}/s)</div>
+                      <div class="full">Ex Luggage: (${{ value.7|floatformat:"0" }}/l)</div>
+                      <div class="full">Stopover: (${{ value.6|floatformat:"0" }}/s)</div>
+                  </div>
+              </div>
+
+              <div class="getresult-right">
+                  <h4>Fare include : </h4>
+                  <div class="full cardetails"><label>Estimate :</label><span> {{ value.2|floatformat:"2" }}</span></div>
+                  <div class="full"><label>Gratuity :</label><span>{{ value.3|floatformat:"2" }}</span></div>
+                  <div class="full"><label>Night Charge :</label><span>{{ value.4|floatformat:"2" }}</span></div>
+                  <div class="full total"><label>Total Fare : </label><span>{{ value.14|floatformat:"2" }}</span></div>
+                  <input type="button" class="bluebtn" name="submit" value="View Details &#x27A1;" id="submit"/>
+              </div>
+
+          </li>
+          {% endfor %}
+
+
+          <!--
+          <li class="getresult-full">
+              <div class="getresult-left">
+                  <img src="{% static "images/car.jpg" %}">
+              </div>
+              <div class="getresult-center">
+                  <div class="getresult-center-left">
+                      <h2>Boston Airport Express MA</h2>
+                      <div class="full">Rating based on google : (8.1 / 10)</div>
+                      <div class="full">Affordeble Service</div>
+                      <div class="full cardetails">Car Details: 2 Passenger mini sedan</div>
+                      <div class="full">2 Passenger | 6 Luggage | Dark black</div>
+                  </div>
+                  <div class="getresult-center-right">
+                      <h4>More fare(Exclude) : </h4>
+                      <div class="full cardetails">Child seat:($5/s)</div>
+                      <div class="full">Stopover: ($5/s)</div>
+                      <div class="full">Ex Luggage: ($5/s)</div>
+                      <div class="full">Stopover: ($5/s)</div>
+                      <div class="full">Ex Luggage: ($5/s)</div>
+                  </div>
+              </div>
+              <div class="getresult-right">
+                  <h4>Fare include : </h4>
+                  <div class="full cardetails"><label>Estimate :</label><span> $30</span></div>
+                  <div class="full"><label>Night Charge :</label><span> $10</span></div>
+                  <div class="full"><label>Toll Tax :</label><span> $7</span></div>
+                  <div class="full total"><label>Total Fare : </label><span>$47</span></div>
+                  <input type="button" class="bluebtn" name="submit" value="View Details &#x27A1;" id="submit"/>
+              </div>
+          </li>
+          -->
+      </ul>
+  </section>
+
+
+</div>
+  {% include "footer.html" %}
+<script type="text/ecmascript">
+
+var rendererOptions = {
+  draggable: true
+};
+var directionsDisplay = new google.maps.DirectionsRenderer(rendererOptions);
+var directionsService = new google.maps.DirectionsService();
+var map;
+
+var start_pos = new google.maps.LatLng(42.3132883,-71.1972422);
+
+function initialize() {
+var defaultBounds = new google.maps.LatLngBounds(
+new google.maps.LatLng(42.3132883,-71.1972422),
+new google.maps.LatLng(42.3381569,-71.0547562)
+);
+
+  var mapOptions = {
+    bounds:defaultBounds,
+    zoom:17,
+    center: start_pos
+  };
+
+  map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+  var from = (document.getElementById('from'));
+  var to = (document.getElementById('to'));
+
+  var autocomplete = new google.maps.places.Autocomplete((from), { types: ['geocode'] } );
+  var autocomplete = new google.maps.places.Autocomplete((to), { types: ['geocode'] } );
+  autocomplete.bindTo('defaultBounds', map);
+  directionsDisplay.setMap(map);
+  //directionsDisplay.setPanel(document.getElementById('directionsPanel'));
+  google.maps.event.addListener(directionsDisplay, 'directions_changed', function() {
+    computeTotalDistance(directionsDisplay.getDirections());
+  });
+  //displayRoute('Perth, WA', 'Sydney, NSW', directionsService, directionsDisplay);
+  calcRoute();
+  //codeAddress();
+}
+
+function calcRoute() {
+  var request = {
+    origin: document.getElementById('from').value,
+    destination: document.getElementById('to').value,
+    travelMode: google.maps.TravelMode.DRIVING
+  };
+  directionsService.route(request, function(response, status) {
+    if (status == google.maps.DirectionsStatus.OK) {
+      directionsDisplay.setDirections(response);
+    }
+  });
+}
+
+function computeTotalDistance(result) {//alert(result[0].formatted_address);
+  var total = 0;
+  var myroute = result.routes[0];
+  var serviceVal=$("#servicetype").val();
+  var distance = 0;
+  //var summaryPanel = document.getElementById("directionsPanel");
+  //summaryPanel.innerHTML = "";
+  //summaryPanel.className = "directionsPanel";
+  for (var i = 0; i < myroute.legs.length; i++) {
+    total += myroute.legs[i].distance.value;
+	//var routeSegment = i + 1;
+  //summaryPanel.innerHTML += "<b>Route Segment: " + routeSegment + "</b><br />";
+  //summaryPanel.innerHTML += myroute.legs[i].start_address + " to ";
+  //summaryPanel.innerHTML += myroute.legs[i].end_address + "<br />";
+    distance += myroute.legs[i].distance.text;
+
+
+	  if(serviceVal==1){
+		document.getElementById('from').value = myroute.legs[i].start_address;
+		//document.getElementById('to').value = myroute.legs[i].end_address;
+		}
+	  if(serviceVal==2){
+		//document.getElementById('from').value = myroute.legs[i].start_address;
+		document.getElementById('to').value = myroute.legs[i].end_address;
+		}
+	  if(serviceVal==3){
+		document.getElementById('from').value = myroute.legs[i].start_address;
+		document.getElementById('to').value = myroute.legs[i].end_address;
+		}
+	 if(serviceVal==4){
+		document.getElementById('from').value = myroute.legs[i].start_address;
+		document.getElementById('to').value = myroute.legs[i].end_address;
+	  }
+  document.getElementById('from').value = myroute.legs[i].start_address;
+  document.getElementById('to').value = myroute.legs[i].end_address;
+  }
+  total = total / 1000.0;
+  document.getElementById('total').innerHTML = total + ' km';
+  var total_dis =  distance.split(" ");
+  document.getElementById('key').value = total_dis[0];
+}
+
+google.maps.event.addDomListener(window, 'load', initialize);
+  </script>
+<script src="{% static "js/jquery/development-bundle/ui/jquery.ui.core.js" %}"></script>
+<script src="{% static "js/jquery/development-bundle/ui/jquery.ui.widget.js" %}"></script>
+<script src="{% static "js/jquery/development-bundle/ui/jquery.effects.slide.js" %}"></script>
+<script src="{% static "js/jquery/development-bundle/ui/jquery.ui.datepicker.js" %}"></script>
+<script type="text/javascript">$(function(){$("#datepicker").datepicker({minDate: 0});$("#datepicker").datepicker();$("#datepicker").datepicker("option", "showAnim", "slideDown");$('#bookingform').each (function(){this.reset();});});
+</script>
+</body>
+</html>
+</body>
+</html>

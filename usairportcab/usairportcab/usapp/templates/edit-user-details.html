@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en" xmlns:usapp="http://www.w3.org/1999/xhtml" xmlns:ride_time="http://www.w3.org/1999/xhtml" xmlns:lugg>
+<head>
+{% load staticfiles %}
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width; initial-scale=1.0">
+<title>Title</title>
+<meta name="description" content="Desc">
+<meta name="keywords" content="Keywords">
+<link rel="stylesheet" href="{% static "css/style.css" %}">
+<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700" rel="stylesheet">
+<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet'>
+<link rel="stylesheet" href="{% static "js/jquery/development-bundle/themes/start/jquery.ui.all.css" %}">
+<link rel="stylesheet" href="{% static "js/jquery/css/demos.css" %}">
+<script type='text/javascript' src="{% static "js/jquery-1.7.2.min.js" %}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAuGBB_AIakD-eVCpOhC4pMfRKwEcul9KQ&libraries=places"></script>
+</head>
+<body>
+<div class="fare-container">
+  <header>
+      <div class="fare-header-left">
+          <div class="logo">
+             <img src="{% static "images/logo.png" %}">
+          </div>
+      </div>
+      <div class="fare-header-right">
+          <span>Find your ideal car service and compare prices from different websites</span>
+      </div>
+  </header>
+
+  <section id="login-form">
+      <div class="login-section">
+          <h1>Edit User Profile</h1>
+           {% if messages %}
+               <ul class="messages">
+                    {% for message in messages %}
+                        <li class="{{ message.tags }}">
+                            {{ message|safe }}
+                            <a href="#" class="close">✖</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+           {% endif %}
+          <div class="full">
+
+            <form action="." method="post" enctype="multipart/form-data">
+                {{ user_form.as_p }}
+                {{ profile_form.as_p }}
+                {% csrf_token %}
+                <label>&nbsp;</label><input type="submit" value="Save Changes" class="bluebtn">
+            </form>
+          </div>
+      </div>
+  </section>
+
+
+</div>
+  {% include "footer.html" %}
+</body>
+</html>

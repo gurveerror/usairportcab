@@ -1,0 +1,16 @@
+{% load staticfiles %}
+<header xmlns:user="http://www.w3.org/1999/xhtml">
+    <div class="main-container">
+      <div class="logo">
+         <img src="{% static "images/logo.png" %}">
+      </div>
+      <div class="nav">
+         <ul>
+           <li><a href="" >HOME</a></li>
+           <li class="cntr"><a href="" >ABOUT US</a></li>
+           <li  class="cntr"><a href="" >CONTACT US</a></li>
+           <li><a href="{%  url "user:login" %}" >LOGIN</a></li>
+         </ul>
+      </div>
+    </div>
+  </header>

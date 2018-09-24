@@ -1,0 +1,38 @@
+{% load staticfiles %}
+<header>
+      <div class="fare-header-left">
+          <div class="logo">
+             <img src="{% static "images/logo.png" %}">
+          </div>
+      </div>
+      <div class="fare-header-right">
+          <span>Find your ideal car service and compare prices from different websites</span>
+      </div>
+  </header>
+
+  <section id="dashboard">
+      <div class="dadhbord-menu-container">
+          <div class="nav">
+             {% if request.user.is_authenticated %}
+                <ul>
+                     <li {% if section == "dashboard" %}class="selected"{% endif %}>
+                        <a href="{% url "user:dashboard" %}">Dashboard</a>
+                     </li>
+                     <li>
+                        <a href="{% url "user:sitesettings" %}">Site Settings</a>
+                     </li>
+                     <li>
+                        <a href="{% url "user:add-car" %}">Add New Car</a>
+                     </li>
+                 </ul>
+             {% endif %}
+          </div>
+          <div class="user">
+             {% if request.user.is_authenticated %}
+                Hello, {{ request.user.first_name }}
+                <a href="/user/logout">Logout</a>
+             {% else %}
+                <a href="">Log-in</a>
+             {% endif %}
+         </div>
+      </div>
